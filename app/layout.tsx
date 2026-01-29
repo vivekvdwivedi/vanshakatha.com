@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "VanshaKatha — Preserve Your Family's Story",
   description:
     "Build your family tree, document stories, and preserve memories together. A beautiful, private space for your family's living chronicle.",
+  icons: {
+    icon: "/icon.svg",
+  },
   openGraph: {
     title: "VanshaKatha — Preserve Your Family's Story",
     description:

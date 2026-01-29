@@ -1,5 +1,3 @@
-import { TreePine } from "lucide-react";
-
 const FOOTER_LINKS = {
   Product: ["Features", "Pricing", "Security", "Changelog"],
   Company: ["About Us", "Blog", "Careers", "Press"],
@@ -14,9 +12,8 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <TreePine className="h-5 w-5 text-accent" />
-              <span className="text-lg font-semibold" style={{ fontFamily: "var(--font-serif)" }}>VanshaKatha</span>
+            <div className="flex items-center mb-3">
+              <img src="/logo.svg" alt="VanshaKatha" className="h-8 w-auto" />
             </div>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
               A beautiful, private space for your family's living chronicle.

@@ -17,8 +17,10 @@ const NAV_LINKS = [
 export function Nav() {
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -34,8 +36,8 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="text-lg font-semibold tracking-tight" style={{ fontFamily: "var(--font-serif)" }}>
-            VanshaKatha
+          <a href="#" className="flex items-center">
+            <img src="/logo.svg" alt="VanshaKatha" className="h-8 w-auto" />
           </a>
 
           {/* Desktop Nav */}
@@ -59,7 +61,7 @@ export function Nav() {
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <Moon className="h-4 w-4" />}
             </button>
             <Button size="sm" variant="accent">Get Started</Button>
           </div>
@@ -71,7 +73,7 @@ export function Nav() {
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors duration-200"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <Moon className="h-4 w-4" />}
             </button>
             <Sheet>
               <SheetTrigger asChild>
@@ -81,7 +83,9 @@ export function Nav() {
               </SheetTrigger>
               <SheetContent side="right">
                 <SheetHeader>
-                  <SheetTitle style={{ fontFamily: "var(--font-serif)" }}>VanshaKatha</SheetTitle>
+                  <SheetTitle className="flex items-center justify-start">
+                    <img src="/logo.svg" alt="VanshaKatha" className="h-8 w-auto" />
+                  </SheetTitle>
                   <SheetDescription className="sr-only">Navigation menu</SheetDescription>
                 </SheetHeader>
                 <div className="flex flex-col gap-4 mt-6">
